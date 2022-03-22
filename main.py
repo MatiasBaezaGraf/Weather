@@ -70,11 +70,11 @@ def results():
             time_icon = "morning.png"
             back_icon = "morning-land.png"
             moment = "Morning"
-        elif 11.0 <= actual_float_time <= sunset_float - 3.0:
+        elif 11.0 <= actual_float_time <= sunset_float - 1.5:
             time_icon = "afternoon.png"
             back_icon = "afternoon-land.png"
             moment = "Afternoon"
-        elif sunset_float - 3.0 <= actual_float_time <= sunset_float:
+        elif sunset_float - 1.5 <= actual_float_time <= sunset_float:
             time_icon = "evening.png"
             back_icon = "evening-land.png"
             moment = "Evening"
