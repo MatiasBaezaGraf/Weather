@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+<body style="background-image: url('/static/{{back_icon}}'); background-size: cover;">
+    <div class = "res-container">
+        <h4 class="main"> {{ city }} {{ time }} <img src="{{url_for('static', filename=time_icon)}}"/> {{ moment }} </h4>
+        <h5 class="temp"><img src="{{url_for('static', filename='sunrise.png')}}", width=35/> {{ sunrise }} &nbsp; <img src="{{url_for('static', filename='sunset.png')}}", width=35/> {{sunset}} </h5><br>
+        <h5 class="temp">{{ today }} </h5>
+        <h5 class="temp">{{ temperature }} - {{ description }} <img src="{{icon}}" width="60" height="60"> </h5>
+        <h5 class="res">Feels like: {{ feels }} </h5>
+        <h5 class="res">Max: {{ max }} - Min: {{ min }} </h5></br>
+        <h5 class="res">Humidity: {{ humidity }} </h5></br>
+        <h5 class="res">Pressure: {{ pressure }} MB </h5></br>
+    </div>
+</header>
+{% endblock %}

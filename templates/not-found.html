@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+<body style="background-image: linear-gradient(white, white);">
+    <h4 class="main" style="text-align: center;"> Error 404: City not found! </h4>
+    <img src = "{{url_for('static', filename='error.jpg')}}"  style="margin-left: 15%; margin-right: 15%;width:60%;height:auto;" />        
+</body>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="res-container">
+    <h1>{% block title %} Weather App {% endblock %}</h1>
+        <form action="/results" method="POST">
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Location</label>
+                <input name="city" type="text" class="form-control" id="inputCity" aria-describedby="emailHelp" placeholder="Example: New York">
+                
+                </br>
+
+                <input type="radio" id="celsius" name="degrees" value="C" checked>
+                <label for="html">°C</label> </br>
+                <input type="radio" id="farenheit" name="degrees" value="F">
+                <label for="css">°F</label>
+            </div>
+            <button type="submit" class="btn btn-secondary">Submit</button>
+        </form>
+</div>
+{% endblock %}

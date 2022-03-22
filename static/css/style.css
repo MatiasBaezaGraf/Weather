@@ -1,0 +1,30 @@
+body {
+    background-image: linear-gradient(white, rgb(228, 228, 228));
+}
+
+.main{
+    font-size: 43;
+    font-weight: 500;
+    text-align: left;
+}
+
+.res {
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.temp{
+    font-size: 30;
+}
+
+.res-container{
+    padding: 2%;
+    border: 2px solid rgb(194, 194, 194);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.75);
+}
+
+.navbar-custom {
+    background-color: gray;
+    color: white;
+}
