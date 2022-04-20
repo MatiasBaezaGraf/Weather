@@ -1,9 +1,9 @@
 from turtle import color
 from flask import Flask, render_template, request
-from tkinter import Tk
 from markupsafe import escape
 from pprint import pprint
 from datetime import datetime, timedelta
+import _tkinter
 import requests
 import logging
 
