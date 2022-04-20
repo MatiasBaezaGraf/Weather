@@ -3,8 +3,8 @@ from flask import Flask, render_template, request
 from markupsafe import escape
 from pprint import pprint
 from datetime import datetime, timedelta
-from tkinter import *
-from tkinter import ttk
+import matplotlib
+matplotlib.use('Agg')
 import requests
 import logging
 
