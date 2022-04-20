@@ -1,30 +1,264 @@
-body {
-    background-image: linear-gradient(white, rgb(228, 228, 228));
+/*Properties of the PERSONAL INFO FOOTER content*/
+
+.personal-info-head{
+    font-family: 'Work Sans', sans-serif;
+    font-size: 2.3vh;
+    font-weight: 500;
+    text-align: center;
 }
 
-.main{
-    font-size: 43;
+.personal-info{
+    font-family: 'Work Sans', sans-serif;
+    font-size: 2.3vh;
+    font-weight: 400;
+    text-align: center;
+}
+
+.inf-link{
+    color: rgb(0, 0, 0);
+}
+
+/*Main div, rendered in base.html*/
+
+.master{
+    height: 100vh;
+}
+
+/*Main stats of the results.html content*/
+
+.main-temperature{
+    font-family: 'Work Sans', sans-serif;
+    font-size: 8vw;
     font-weight: 500;
+    text-align: left;
+    font-weight: 300;
+}
+
+.city{
+    font-family: 'Work Sans', sans-serif;
+    font-size: 4vw;
+    font-weight: 500;
+    text-align: left;
+    font-weight: 200;
+    margin-bottom: 0;
+}
+
+.sub-city{
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1.8vw;
+    text-align: left;
+    font-weight: 300;
+}
+
+/*Forecast stats of the results.html content*/
+
+.right-titles{
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1.4vw;
+    font-weight: 500;
+
+    display: flex;
+    align-items: center;
     text-align: left;
 }
 
-.res {
+.right-titles::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid;
+}
+  
+.right-titles:not(:empty)::after {
+    margin-left: .55em;
+}
+
+.forecast{
+    font-family: 'Work Sans', sans-serif;
+    font-size: 2.3vh;
+    font-weight: 400;
+    text-align: center;
+}
+
+.forecast-bold{
+    font-family: 'Work Sans', sans-serif;
+    font-size: 2.3vh;
     font-weight: 500;
-    font-family: 'Montserrat', sans-serif;
+    text-align: center;
 }
 
-.temp{
-    font-size: 30;
+
+.container-full{
+    height: 100vh;
 }
 
-.res-container{
-    padding: 2%;
-    border: 2px solid rgb(194, 194, 194);
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.75);
+.half-l{
+    padding-top: 4vh;
+    padding-left: 3vw;
+    width: 55vw;
+}
+.half-r{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding-top: 4vh;
+    padding-bottom: 1vh;
+    padding-right: 3vw;
+    padding-left: 3vw;
+    width: 45vw;
+    height: 100vh;
+/*blur effect*/
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+}
+
+#main-form{
+    width: 100%;
+    padding-right: 3vw;
+    padding-left: 3vw;
+    height: 80vh
+}
+
+#about{
+    padding-bottom: 3vh;
+    padding-top: 3vh;
+    padding-left: 3vw;
+    padding-right: 3vw;
+    height: 20vh;
+
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.current{
+    text-align: center;
+}
+
+.responsive{
+    height: 15vh;
+}
+
+.icon{
+    width: 12vh;
+}
+
+.icon-special {
+    width: 10vh;
+}
+
+.icon-search{
+    height: 100%;
+    padding-right: 0.7vw;
+}
+
+.icon-info{
+    height: 22%;
 }
 
 .navbar-custom {
     background-color: gray;
     color: white;
+    height: 7vh;
+}
+
+@media (max-width: 576px) {
+
+#main-mobile {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+}
+
+#mobile-u{
+    width: 100%;
+    height: 60vh;
+    padding-top: 4vh;
+    padding-bottom: 4vh;
+    padding-right: 3vw;
+    padding-left: 3vw;
+}
+
+#mobile-d{
+    width: 100%;
+    height: auto;
+}
+
+#mobile-main-stats{
+    height: 95%;
+    display: flex;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+}
+
+#results-page-form{
+    width: 100% !important;
+    text-align: center;
+}
+
+#main-form{
+    width: 100%;
+    padding-right: 3vw;
+    padding-left: 3vw;
+}
+
+.stats{
+    align-self: center;
+    padding: 0 !important;
+}
+
+.main-temperature{
+    font-family: 'Work Sans', sans-serif;
+    font-size: 18vw;
+    font-weight: 300;
+}
+
+.city{
+    font-family: 'Work Sans', sans-serif;
+    font-size: 12vw;
+    font-weight: 500;
+    text-align: left;
+    font-weight: 200;
+    margin-bottom: 0;
+}
+
+.sub-city{
+    font-family: 'Work Sans', sans-serif;
+    font-size: 5vw;
+    text-align: left;
+    font-weight: 300;
+}
+
+.right-titles{
+    font-family: 'Work Sans', sans-serif;
+    font-size: 3.5vw;
+    font-weight: 500;
+
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+.forecast{
+    font-family: 'Work Sans', sans-serif;
+    font-size: 2.8vw;
+    font-weight: 400;
+    text-align: center;
+}
+
+.forecast-bold{
+    font-family: 'Work Sans', sans-serif;
+    font-size: 2.8vw;
+    font-weight: 500;
+    text-align: center;
+}
+
+.icon{
+    width: 12vw;
+}
+
+.icon-special {
+    width: 10vw;
+}
+
 }

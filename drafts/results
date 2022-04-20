@@ -1,0 +1,56 @@
+<body style="background-image: url('/static/{{back_icon}}'); background-size: cover;">
+    <div class = "res-container">
+        <h4 class="main"> {{ city }} {{ time }} <img src="{{url_for('static', filename=time_icon)}}"/> {{ moment }} </h4>
+        <h5 class="temp"><img src="{{url_for('static', filename='sunrise.png')}}", width=35/> {{ sunrise }} &nbsp; <img src="{{url_for('static', filename='sunset.png')}}", width=35/> {{sunset}} </h5><br>
+        <h5 class="temp">{{ today }} </h5>
+        <h5 class="temp">{{ temperature }} - {{ description }} <img src="{{icon}}" width="60" height="60"> </h5>
+        <h5 class="res">Feels like: {{ feels }} </h5>
+        <h5 class="res">Max: {{ max }} - Min: {{ min }} </h5></br>
+        <h5 class="res">Humidity: {{ humidity }} </h5></br>
+        <h5 class="res">Pressure: {{ pressure }} MB </h5></br>
+        <div class="d-flex justify-content-start">
+            <div class="d-flex flex-column">
+                <p style="text-align: center;"> {{ hourly[0] }} </p>
+                <img src="{{hourly_icons[0]}}" width="60" height="60">
+                <p style="text-align: center;"> {{ hourly_temps[0] }} </p>
+            </div>     
+
+            <div class="d-flex flex-column">
+                <p style="text-align: center;"> {{ hourly[1] }} </p>
+                <img src="{{hourly_icons[1]}}" width="1vw" height="2vh">
+                <p style="text-align: center;"> {{ hourly_temps[0] }} </p>
+            </div>     
+        
+            <div class="d-flex flex-column">
+                <p style="text-align: center;"> {{ hourly[2] }} </p>
+                <img src="{{hourly_icons[2]}}" width="60" height="60">
+                <p style="text-align: center;"> {{ hourly_temps[2] }} </p>
+            </div>     
+        
+            <div class="d-flex flex-column">
+                <p style="text-align: center;"> {{ hourly[3] }} </p>
+                <img src="{{hourly_icons[3]}}" width="60" height="60">
+                <p style="text-align: center;"> {{ hourly_temps[3] }} </p>
+            </div>     
+        
+            <div class="d-flex flex-column">
+                <p style="text-align: center;"> {{ hourly[4] }} </p>
+                <img src="{{hourly_icons[4]}}" width="60" height="60">
+                <p style="text-align: center;"> {{ hourly_temps[4] }} </p>
+            </div>     
+        
+            <div class="d-flex flex-column">
+                <p style="text-align: center;"> {{ hourly[5] }} </p>
+                <img src="{{hourly_icons[5]}}" width="60" height="60">
+                <p style="text-align: center;"> {{ hourly_temps[5] }} </p>
+            </div>     
+        
+            <div class="d-flex flex-column">
+                <p style="text-align: center;"> {{ hourly[6] }} </p>
+                <img src="{{hourly_icons[6]}}" width="60" height="60">
+                <p style="text-align: center;"> {{ hourly_temps[6] }} </p>
+            </div>     
+        </div>
+            
+    </div>
+</header>

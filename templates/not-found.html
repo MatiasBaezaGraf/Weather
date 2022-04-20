@@ -1,9 +1,28 @@
 {% extends 'base.html' %}
-{% block title %} {{ title }} {% endblock %}
+{% block title %} City Not Found {% endblock %}
 
 {% block content %}
-<body style="background-image: linear-gradient(white, white);">
-    <h4 class="main" style="text-align: center;"> Error 404: City not found! </h4>
-    <img src = "{{url_for('static', filename='error.jpg')}}"  style="margin-left: 15%; margin-right: 15%;width:60%;height:auto;" />        
-</body>
+<body style="background-image: linear-gradient(white, white);"></body>
+<div class="container-full">
+    <div class="d-flex flex-column justify-content-around h-100 pl-3 pr-3 pb-3 ">
+        <h4 class="city mt-2" style="text-align: center;"> Error 404: City not found! </h4>
+        <img src = "{{url_for('static', filename='error.jpg')}}"  style="align-self: center ;width:60%;height:auto;" />
+        <form class="align-self-center w-75" action="/results" method="POST">
+            <div id="results-page-form" class="input-group w-100">
+                <input class=" form-control opacity-50" name="city" type="text" class="form-control" id="inputCity" aria-describedby="emailHelp" placeholder="Search Locations...">
+                <div class="btn-group btn-group-toggle opacity-75" data-toggle="buttons">
+                    <label class="btn btn-secondary rounded-0 active">
+                        <input type="radio" name="degrees" id="celsius" value="C" autocomplete="off" checked> °C
+                    </label>
+                    <label class="btn btn-secondary rounded-0">
+                        <input type="radio" name="degrees" id="farenheit" value="F" autocomplete="off"> °F
+                    </label>
+                </div>
+                <button class="input-group-text btn-primary rounded-end opacity-75" type="submit"><img src="{{url_for('static', filename='search.svg')}}" class="icon-search"></button>
+                </br>
+            </div>
+        </form>
+    </div>
+</div>        
+
 {% endblock %}

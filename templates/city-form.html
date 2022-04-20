@@ -1,21 +1,32 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="res-container">
-    <h1>{% block title %} Weather App {% endblock %}</h1>
+<body style="background-image: url('/static/mainland.jpg'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;"></body>
+<div class="container-full">
+    <div id = "main-form" class="half-l">
+        <h1 class = "city mb-3">{% block title %} Weather {% endblock %}</h1>
         <form action="/results" method="POST">
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Location</label>
-                <input name="city" type="text" class="form-control" id="inputCity" aria-describedby="emailHelp" placeholder="Example: New York">
-                
+            <div id="results-page-form" class="input-group mb-3 w-50">
+                <input class=" form-control opacity-50" name="city" type="text" class="form-control" id="inputCity" aria-describedby="emailHelp" placeholder="Search Locations...">
+                <div class="btn-group btn-group-toggle opacity-75" data-toggle="buttons">
+                    <label class="btn btn-secondary rounded-0 active">
+                        <input type="radio" name="degrees" id="celsius" value="C" autocomplete="off" checked> °C
+                    </label>
+                    <label class="btn btn-secondary rounded-0">
+                        <input type="radio" name="degrees" id="farenheit" value="F" autocomplete="off"> °F
+                    </label>
+                </div>
+                <button class="input-group-text btn-primary rounded-end opacity-75" type="submit"><img src="{{url_for('static', filename='search.svg')}}" class="icon-search"></button>
                 </br>
-
-                <input type="radio" id="celsius" name="degrees" value="C" checked>
-                <label for="html">°C</label> </br>
-                <input type="radio" id="farenheit" name="degrees" value="F">
-                <label for="css">°F</label>
             </div>
-            <button type="submit" class="btn btn-secondary">Submit</button>
         </form>
+    </div>
+    <div id="about">
+        <div class="personal-info-head">By Matias Baeza Graf - 2022</div>
+        <div class="personal-info"><img src="{{url_for('static', filename='WP.png')}}" class="icon-info"> <a class="inf-link" href="https://wa.me/2235440115"> +54 9 223 5 440 115</a></div>
+        <div class="personal-info"><img src="{{url_for('static', filename='ML.png')}}" class="icon-info"> <a class="inf-link" href="mailto:matiasbaezagraf@gmail.com"> matiasbaezagraf@gmail.com</a></div>
+        <div class="personal-info"><img src="{{url_for('static', filename='IG.png')}}" class="icon-info"> <a class="inf-link" href="https://www.instagram.com/matibaezagraf/"> matibaezagraf</a></div>
+    </div>
+
 </div>
 {% endblock %}

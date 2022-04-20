@@ -1,17 +1,148 @@
 {% extends 'base.html' %}
-{% block title %} {{ title }} {% endblock %}
+{% block title %} Weather of {{ city }} {% endblock %}
 
 {% block content %}
-<body style="background-image: url('/static/{{back_icon}}'); background-size: cover;">
-    <div class = "res-container">
-        <h4 class="main"> {{ city }} {{ time }} <img src="{{url_for('static', filename=time_icon)}}"/> {{ moment }} </h4>
-        <h5 class="temp"><img src="{{url_for('static', filename='sunrise.png')}}", width=35/> {{ sunrise }} &nbsp; <img src="{{url_for('static', filename='sunset.png')}}", width=35/> {{sunset}} </h5><br>
-        <h5 class="temp">{{ today }} </h5>
-        <h5 class="temp">{{ temperature }} - {{ description }} <img src="{{icon}}" width="60" height="60"> </h5>
-        <h5 class="res">Feels like: {{ feels }} </h5>
-        <h5 class="res">Max: {{ max }} - Min: {{ min }} </h5></br>
-        <h5 class="res">Humidity: {{ humidity }} </h5></br>
-        <h5 class="res">Pressure: {{ pressure }} MB </h5></br>
+<body style="background-image: url('/static/{{back_icon}}'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;"></body>
+<div class="container-full">
+    <div style='color: {{ text_color }}' id="main-mobile" class="d-flex justify-content-between">
+        <div id="mobile-u" class="half-l">
+            <div id="mobile-main-stats" class="d-flex flex-row">
+                <div class="stats pr-3">
+                    <h4 class="main-temperature">{{ temperature }}</h4>
+                </div>
+                <div class=" stats pr-2 align-self-center">
+                    <h4 class="city">{{ city }}</h4>
+                    <h5 class="sub-city">{{ date }}</h5>
+                </div>
+                <div class="stats pr-2">
+                    <img src="{{icon}}" class="responsive">  
+                </div>
+            </div>
+            <form action="/results" method="POST">
+                <div id="results-page-form" class="input-group mb-3 w-50">
+                    <input class=" form-control opacity-50" name="city" type="text" class="form-control" id="inputCity" aria-describedby="emailHelp" placeholder="Search Locations...">
+                    <div class="btn-group btn-group-toggle opacity-75" data-toggle="buttons">
+                        <label class="btn btn-secondary rounded-0 active">
+                            <input type="radio" name="degrees" id="celsius" value="C" autocomplete="off" checked> °C
+                        </label>
+                        <label class="btn btn-secondary rounded-0">
+                            <input type="radio" name="degrees" id="farenheit" value="F" autocomplete="off"> °F
+                        </label>
+                    </div>
+                    <button class="input-group-text btn-primary rounded-end opacity-75" type="submit"><img src="{{url_for('static', filename='search.svg')}}" class="icon-search"></button>
+                    </br>
+                </div>
+            </form>
+        </div>
+
+        <div style='background-color: {{ background_opacity }}' id="mobile-d" class="half-r">
+            <div>
+                <h5 class="right-titles">Weather Details</h5>
+            </div>
+            <br>
+            <div class="d-flex flex-row justify-content-around">
+                <div>
+                    <h5 class="forecast-bold"> Cloudiness </h5>
+                    <h5 class="forecast"> {{ clouds }} </h5>
+                    <img src="{{url_for('static', filename='clouds.png')}}"class="icon-special">
+                </div>
+                <div>
+                    <h5 class="forecast-bold"> Humidity </h5>
+                    <h5 class="forecast"> {{ humidity }} </h5>
+                    <img src="{{url_for('static', filename='humidity.png')}}"class="icon-special">
+                </div>
+                <div>
+                    <h5 class="forecast-bold"> UV Index </h5>
+                    <h5 class="forecast"> {{ uvi }} </h5>
+                    <img src="{{url_for('static', filename='uv.png')}}" class="icon-special">
+                </div>
+                <div>
+                    <h5 class="forecast-bold"> Sunrise </h5>
+                    <h5 class="forecast"> {{ sunrise }} </h5>
+                    <img src="{{url_for('static', filename='sunrise.png')}}" class="icon-special">
+                </div>
+                <div>
+                    <h5 class="forecast-bold"> Sunset </h5>
+                    <h5 class="forecast"> {{ sunset }} </h5>
+                    <img src="{{url_for('static', filename='sunset.png')}}" class="icon-special">
+                </div>
+            </div>
+
+            <br>
+
+            <div class="right-titles">
+                Hourly Forecast
+            </div>
+            <br>
+            <div class="d-flex flex-row justify-content-around">
+                <div>
+                    <h5 class="forecast-bold"> {{ hourly[0] }} </h5>
+                    <h5 class="forecast"> {{ hourly_temps[0] }} </h5>
+                    <img src="{{hourly_icons[0]}}" class="icon">
+                </div>
+                <div>
+                    <h5 class="forecast-bold"> {{ hourly[1] }} </h5>
+                    <h5 class="forecast"> {{ hourly_temps[1] }} </h5>
+                    <img src="{{hourly_icons[1]}}" class="icon">
+                </div>
+                <div>
+                    <h5 class="forecast-bold"> {{ hourly[2] }} </h5>
+                    <h5 class="forecast"> {{ hourly_temps[2] }} </h5>
+                    <img src="{{hourly_icons[2]}}" class="icon">
+                </div>
+                <div>
+                    <h5 class="forecast-bold"> {{ hourly[3] }} </h5>
+                    <h5 class="forecast"> {{ hourly_temps[3] }} </h5>
+                    <img src="{{hourly_icons[3]}}" class="icon">
+                </div>
+                <div>
+                    <h5 class="forecast-bold"> {{ hourly[4] }} </h5>
+                    <h5 class="forecast"> {{ hourly_temps[4] }} </h5>
+                    <img src="{{hourly_icons[4]}}" class="icon">
+                </div>
+            </div>
+            
+            <br>
+            
+            <div>
+                <h5 class="right-titles">Daily Forecast</h5> 
+            </div>
+            <br>
+            <div class="d-flex flex-row justify-content-around">
+                <div>
+                    <h5 class="forecast-bold"> {{ daily[0] }} </h5>
+                    <h5 class="forecast"> Min {{ daily_min_temps[0] }} </h5>
+                    <h5 class="forecast"> Max {{ daily_max_temps[0] }} </h5>
+                    <img src="{{daily_icons[0]}}" class="icon">
+                </div>
+                <div>
+                    <h5 class="forecast-bold"> {{ daily[1] }} </h5>
+                    <h5 class="forecast"> Min {{ daily_min_temps[1] }} </h5>
+                    <h5 class="forecast"> Max {{ daily_max_temps[1] }} </h5>
+                    <img src="{{daily_icons[1]}}" class="icon">
+                </div>
+                <div>
+                    <h5 class="forecast-bold"> {{ daily[2] }} </h5>
+                    <h5 class="forecast"> Min {{ daily_min_temps[2] }} </h5>
+                    <h5 class="forecast"> Max {{ daily_max_temps[2] }} </h5>
+                    <img src="{{daily_icons[2]}}" class="icon">
+                </div>
+                <div>
+                    <h5 class="forecast-bold"> {{ daily[3] }} </h5>
+                    <h5 class="forecast"> Min {{ daily_min_temps[3] }} </h5>
+                    <h5 class="forecast"> Max {{ daily_max_temps[3] }} </h5>
+                    <img src="{{daily_icons[3]}}" class="icon">
+                </div>
+                <div>
+                    <h5 class="forecast-bold"> {{ daily[4] }} </h5>
+                    <h5 class="forecast"> Min {{ daily_min_temps[4] }} </h5>
+                    <h5 class="forecast"> Max {{ daily_max_temps[4] }} </h5>
+                    <img src="{{daily_icons[4]}}" class="icon">
+                </div>
+            </div>
+            
+        </div>
     </div>
-</header>
+</div>
+
 {% endblock %}
