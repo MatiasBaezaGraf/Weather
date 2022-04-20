@@ -3,7 +3,8 @@ from flask import Flask, render_template, request
 from markupsafe import escape
 from pprint import pprint
 from datetime import datetime, timedelta
-import _tkinter
+from tkinter import *
+from tkinter import ttk
 import requests
 import logging
 
